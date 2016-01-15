@@ -35,8 +35,21 @@ Once you restart your Terminal/Bash shell or open up a new window/tab, you'll be
 The following commands are currently supported by GHL CLI:
 
 |script|description|
-|----|---|
-|`$ ghl`|Prints out description and meta info in shell|
+|------|-----------|
+|`$ ghl`|Prints out description and meta info in shell.|
+|`$ ghl`|view this message.|
+|`$ add`|add files to stage.|
+|`$ branch`|view/add/remove branches.|
+|`$ checkout`|change branches.|
+|`$ clone`|clone repos.|
+|`$ commit`|commit staged files.|
+|`$ log`|view past commits.|
+|`$ merge`|merge a branch with the current branch.|
+|`$ pull`|pull from a remote repo.|
+|`$ push`|push to a remote repo.|
+|`$ pushup`|push to and set upstream.|
+|`$ remote`|view/add/remove remotes.|
+|`$ status`|view staged/untracked files.|
 
 
 ## Updating
