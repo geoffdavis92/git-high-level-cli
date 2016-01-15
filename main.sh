@@ -29,7 +29,7 @@ add() {
 		# ToDo: add loop component from personal bash file
 		git add $1;
 	else
-		echo "Not enough files specified.";
+		echo "!ERROR : Not enough files specified.";
 	fi
 }
 branch() {
@@ -39,7 +39,7 @@ branch() {
 			git branch $2 &&
 			git branch;
 		else
-			echo "No branch name specified.";
+			echo "!ERROR : No branch name specified.";
 		fi
 	elif [[ $1 == "-d" ]] &&  [ $2 ]; then
 		if [ $2 ]; then
@@ -47,7 +47,7 @@ branch() {
 			git branch -d $2 &&
 			git branch;
 		else
-			echo "No branch name specified.";
+			echo "!ERROR : No branch name specified.";
 		fi
 	else
 		# print branches
@@ -59,7 +59,7 @@ checkout() {
 		# checkout passed branch 
 		git checkout $1;
 	else
-		echo "No branch name specified.";
+		echo "!ERROR : No branch name specified.";
 	fi
 }
 clone() {
@@ -72,7 +72,7 @@ clone() {
 			git clone $1;
 		fi
 	else
-		echo "No remote URL specified";
+		echo "!ERROR : No remote URL specified";
 	fi
 }
 commit() {
@@ -81,7 +81,7 @@ commit() {
 		# !important: $1 must be passed as a string
 		git commit -m "$1";
 	else
-		echo "No commit message entered.";
+		echo "!ERROR : No commit message entered.";
 	fi
 }
 log() {
@@ -93,7 +93,7 @@ merge() {
 		# merge passed branch with current branch
 		git merge $1;
 	else
-		echo "No branch name specified";
+		echo "!ERROR : No branch name specified";
 	fi
 }
 pull() {
@@ -119,10 +119,10 @@ pushup(){
 			# 		$3 being the branch.
 			git push -u $1 $2;
 		else
-			echo "Missing remote branch name.";
+			echo "!ERROR : No remote branch name specified.";
 		fi
 	else
-		echo "Missing remote name.";
+		echo "!ERROR : No remote name specified.";
 	fi
 }
 remote() {
@@ -132,7 +132,7 @@ remote() {
 			# 		being the URL to the remote repo
 			git remote add $2 $3;
 		else
-			echo "No remote name and/or remote URL specified.";
+			echo "!ERROR : No remote name and/or remote URL specified.";
 		fi
 	else
 		# print remotes
