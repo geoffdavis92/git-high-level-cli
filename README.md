@@ -33,6 +33,7 @@ Once you restart your Terminal/Bash shell or open up a new window/tab, you'll be
 ## Commands
 
 The following commands are currently supported by GHL CLI:
+
 |script|description|
 |----|---|
 |`$ ghl`|Prints out description and meta info in shell|
