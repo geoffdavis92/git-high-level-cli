@@ -113,12 +113,16 @@ push() {
 	fi
 }
 pushup(){
-	if [ $2 ] && [ $3 ]; then
-		# push commits to upstream, with argument $2 being the remote, and
-		# 		$3 being the branch.
-		git push -u $2 $3;
+	if [ $2 ]; then
+		if [ $3 ]; then
+			# push commits to upstream, with argument $2 being the remote, and
+			# 		$3 being the branch.
+			git push -u $2 $3;
+		else
+			echo "Missing remote branch name.";
+		fi
 	else
-		echo "Missing remote name and/or remote branch name";
+		echo "Missing remote name.";
 	fi
 }
 remote() {
