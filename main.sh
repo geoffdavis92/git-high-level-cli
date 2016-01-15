@@ -113,11 +113,11 @@ push() {
 	fi
 }
 pushup(){
-	if [ $2 ]; then
-		if [ $3 ]; then
+	if [ $1 ]; then
+		if [ $2 ]; then
 			# push commits to upstream, with argument $2 being the remote, and
 			# 		$3 being the branch.
-			git push -u $2 $3;
+			git push -u $1 $2;
 		else
 			echo "Missing remote branch name.";
 		fi
