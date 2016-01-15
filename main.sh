@@ -1,4 +1,11 @@
 # git commands
+ghl() {
+	echo "*  Git-High-Level CLI is a small library of bash shell *";
+	echo "*  commands to shortcut several git commands           *";
+	echo "*                                                      *";
+	echo "*=== COMMANDS ===";
+	echo "";
+}
 add() {
 	if [ $1 ]; then
 		git add $1;
