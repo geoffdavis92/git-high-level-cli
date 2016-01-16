@@ -90,11 +90,21 @@ checkout() {
 clone() {
 	if [ $1 ]; then
 		if [[ $1 == "-p" ]] || [[ $1 == "paste" ]]; then
-			# clone repo URL from clipboard
-			git clone $(pbpaste);
+			if [[ $2 ]]; then
+				# clone repo from clipboard to directory $2
+				git clone $(pbpaste) $2;
+			else
+				# clone repo URL from clipboard
+				git clone $(pbpaste);
+			fi
 		else
-			# clone repo URL from argument
-			git clone $1;
+			if [[ $2 ]]; then
+				# clone repo URL to directory $2
+				git clone $1 $2;
+			else
+				# clone repo URL from argument
+				git clone $1;
+			fi
 		fi
 	else
 		echo "!ERROR : No remote URL specified";
