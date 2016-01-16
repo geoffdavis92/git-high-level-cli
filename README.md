@@ -43,6 +43,7 @@ The following commands are currently supported by GHL CLI:
 |`$ checkout`|change branches.|
 |`$ clone`|clone repos.|
 |`$ commit`|commit staged files.|
+|`$ ignore`|adds to ignore file or creates new ignore file with output.|
 |`$ log`|view past commits.|
 |`$ merge`|merge a branch with the current branch.|
 |`$ pull`|pull from a remote repo.|

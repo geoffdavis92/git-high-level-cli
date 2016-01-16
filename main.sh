@@ -12,6 +12,8 @@ ghl() {
 	echo "* checkout   		: change branches.                        *";
 	echo "* clone   		: clone repos.                         	  *";
 	echo "* commit   		: commit staged files.                    *";
+	echo "* ignore 		: ignores passed files or creates         *";
+	echo "*                         gitignore with passed files             *";
 	echo "* log   		: view past commits.                      *";
 	echo "* merge   		: merge a branch with the current branch. *";
 	echo "* pull   		: pull from a remote repo.                *";
@@ -27,7 +29,6 @@ add() {
 	# 		commands, or if passing more than one file.
 	str="";
 	for el in $@; do
-	    echo "the next element is $el";
 	    str="$str $el";
 	done
 	if [ $str == "." ]; then
@@ -52,9 +53,9 @@ add() {
 	fi
 }
 branch() {
-	if [[ $1 ]]; then
+	if [[ $1 ]] && [[ $1 != "-d" ]]; then
 		# add branch passed as argument 2, then print branches
-		git branch $2 &&
+		git branch $1 &&
 		git branch;
 	elif [[ $1 == "-d" ]] &&  [ $2 ]; then
 		if [ $2 ]; then
@@ -99,6 +100,24 @@ commit() {
 		echo "!ERROR : No commit message entered.";
 	fi
 }
+ignore() {
+	if [[ -e ".gitignore" ]]; then
+		str="";
+		for el in $@; do
+		    str="$str \n$el";
+		done
+		printf "$str" >> .gitignore;
+	else
+		# from http://bit.ly/1ZEe0kb
+		# to assign to a variable
+		result=${PWD##*/};
+		str="# $result ignores...";
+		for el in $@; do
+		    str="$str \n$el";
+		done
+		printf "$str" >> .gitignore;
+	fi
+}
 log() {
 	# print log of past commits
 	git log;
@@ -112,8 +131,14 @@ merge() {
 	fi
 }
 pull() {
-	# pull from current set remote, showing progress
-	git pull --progress;
+	if [[ $1 ]] && [[ $2 ]]; then
+		# pull from remote repo where argument $1 is remote name and
+		#		argument $2 is remote branch name
+		git pull $1 $2;
+	else
+		# pull from current set remote, showing progress
+		git pull --progress;
+	fi
 }
 push() {
 	if [ $2 ]; then
