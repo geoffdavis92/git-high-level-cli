@@ -22,25 +22,40 @@ ghl() {
 	echo "*******************************************************************";
 }
 add() {
-	if [ $1 ]; then
-		# add passed files
-		# !important: $1 must be passed as a string if not using traidtional git
-		# 		commands, or if passing more than one file.
-		# ToDo: add loop component from personal bash file
-		git add $1;
+	# add passed files
+	# !important: $1 must be passed as a string if not using traidtional git
+	# 		commands, or if passing more than one file.
+	str="";
+	for el in $@; do
+	    echo "the next element is $el";
+	    str="$str $el";
+	done
+	if [ $str == "." ]; then
+		msg="this directory";
+		echo "Added— $msg –to git stage";
+		str=".";
+		git add "$str";
+	elif [ $str == "*" ]; then
+		msg="all files";
+		echo "Added— $msg –to git stage";
+		str="*";
+		git add "$str";
+	elif [ $str == "all" ]; then
+		msg="all changed files";
+		echo "Added— $msg –to git stage";
+		str="--all";
+		git add "$str";
 	else
-		echo "!ERROR : Not enough files specified.";
+		# msg="Added to git stage";
+		echo "Added— $str.";
+		git add $str;
 	fi
 }
 branch() {
-	if [[ $1 == "-a" ]] &&  [ $2 ]; then
-		if [ $2 ]; then
-			# add branch passed as argument 2, then print branches
-			git branch $2 &&
-			git branch;
-		else
-			echo "!ERROR : No branch name specified.";
-		fi
+	if [[ $1 ]]; then
+		# add branch passed as argument 2, then print branches
+		git branch $2 &&
+		git branch;
 	elif [[ $1 == "-d" ]] &&  [ $2 ]; then
 		if [ $2 ]; then
 			# remove branch passed as argument 2, then print branches
@@ -126,17 +141,31 @@ pushup(){
 	fi
 }
 remote() {
-	if [[ $1 == "-a" ]]; then
-		if [ $3 ] && [ $2 ]; then
-			# add remote, with argument $2 being the remote name and argument $3
+	if [[ $1 ]]; then
+		if [ $1 != "-d" ] && [ $2 ]; then
+			# add remote, with argument $1 being the remote name and argument $2
 			# 		being the URL to the remote repo
-			git remote add $2 $3;
+			git remote add $1 $2;
+		elif [ $1 == "-d" ] && [ $2 ]; then
+			git remote remove #2
 		else
 			echo "!ERROR : No remote name and/or remote URL specified.";
 		fi
 	else
 		# print remotes
 		git remote;
+	fi
+}
+rollback() {
+	# git reset --hard <tag/branch/commit id>
+	if [ $1 ]; then
+		if [[ $1 == "-p" ]]; then
+			git reset --hard $(pbpaste)
+		else
+			git reset --hard $1;
+		fi
+	else
+		echo "No reference given";
 	fi
 }
 status() {
