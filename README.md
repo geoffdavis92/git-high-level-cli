@@ -37,6 +37,7 @@ The following commands are currently supported by GHL CLI:
 |script|description|
 |------|-----------|
 |`$ ghl`|Prints out description and meta info in shell.|
+|`$ acp`|add, commit with message, and push to default branch.|
 |`$ add`|add files to stage.|
 |`$ branch`|view/add/remove branches.|
 |`$ checkout`|change branches.|

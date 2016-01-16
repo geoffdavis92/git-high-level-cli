@@ -7,6 +7,8 @@ ghl() {
 	echo "*                                                                 *";
 	echo "*  === COMMANDS ===                                               *";
 	echo "* ghl   		: view this message.                      *";
+	echo "* acp                   : add, commit with message, and push to   *";
+	echo "*                       default branch                            *";
 	echo "* add   		: add files to stage.                     *";
 	echo "* branch   		: view/add/remove branches.               *";
 	echo "* checkout   		: change branches.                        *";
@@ -22,6 +24,13 @@ ghl() {
 	echo "* remote   		: view/add/remove remotes.                *";
 	echo "* status   		: view staged/untracked files             *";
 	echo "*******************************************************************";
+}
+acp() {
+	if [[ $1 ]]; then
+		git add --all && git commit -m "$1" && git push;
+	else
+		echo "No commit message";
+	fi
 }
 add() {
 	# add passed files
