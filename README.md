@@ -4,7 +4,7 @@ Git just got *that* much easier! The Git High-Level CLI simplifies the git proce
 
 |Status|
 |------|
-|0.5.0 |
+|0.5.1 |
 
 ## Overview
 
@@ -17,9 +17,9 @@ Ensure that you have [git](https://git-scm.com/) installed. Visit their [downloa
 Clone this repo to a `.bash` directory in your root directory:
 
 ```bash
-mkdir ~/.bash # if you don't already have a .bash directory here
-cd ~/.bash
-git clone git@github.com:fullstax/git-high-level-cli.git
+$ mkdir ~/.bash # if you don't already have a .bash directory here
+$ cd ~/.bash
+$ git clone git@github.com:fullstax/git-high-level-cli.git
 ```
 
 Edit your `~/.bash_profile`, `~/.bashrc`, or `~/.profile` and add the following code to the top:
@@ -29,6 +29,13 @@ export GITHIGHLEVELCLI=~/.bash/git-high-level-cli
 source "${GITHIGHLEVELCLI}/main.sh"
 ```
 Once you restart your Terminal/Bash shell or open up a new window/tab, you'll be able to use the new commands!
+
+---
+#### Note: Read before continuing
+Once you include the preceeding export/source lines in your `~/.bash*` file(s), some commands with the same name may override or be overridden by the GHL file, depending on the hierarchy of that file. 
+
+If you notice you overrode a command, simply comment out/remove the export/source lines, or rename one of the instances of the conflicted command to something else.
+---
 
 ## Commands
 
@@ -55,11 +62,18 @@ The following commands are currently supported by GHL CLI:
 
 ## Updating
 
+Before you update, you can check the current version of your clone of GHL by entering the following in your shell:
+
+```bash
+$ ghl v # short version
+$ ghl version # long version
+```
+
 Updating is simple; just navigate to the `.bash` directory that you installed the project to, and pull:
 
 ```bash
-cd ~/.bash/git-high-level-cli
-git pull
+$ cd ~/.bash/git-high-level-cli
+$ pull # assuming you have the GHL pull command setup
 ```
 
 ## License

@@ -1,29 +1,59 @@
+# git-high-level-cli
+version="0.5.1";
 # git commands
 ghl() {
-	# print out project description, commands/meta info
-	echo "*******************************************************************";
-	echo "*  Git-High-Level CLI is a small library of bash shell            *";
-	echo "*  commands to shortcut several git commands                      *";
-	echo "*                                                                 *";
-	echo "*  === COMMANDS ===                                               *";
-	echo "* ghl   		: view this message.                      *";
-	echo "* acp                   : add, commit with message, and push to   *";
-	echo "*                       default branch                            *";
-	echo "* add   		: add files to stage.                     *";
-	echo "* branch   		: view/add/remove branches.               *";
-	echo "* checkout   		: change branches.                        *";
-	echo "* clone   		: clone repos.                         	  *";
-	echo "* commit   		: commit staged files.                    *";
-	echo "* ignore 		: ignores passed files or creates         *";
-	echo "*                         gitignore with passed files             *";
-	echo "* log   		: view past commits.                      *";
-	echo "* merge   		: merge a branch with the current branch. *";
-	echo "* pull   		: pull from a remote repo.                *";
-	echo "* push   		: push to a remote repo.                  *";
-	echo "* pushup   		: push to and set upstream.               *";
-	echo "* remote   		: view/add/remove remotes.                *";
-	echo "* status   		: view staged/untracked files             *";
-	echo "*******************************************************************";
+	if [[ $1 ]]; then
+		if [[ $1 == 'h' ]] || [[ $1 == 'help' ]]; then
+			# ToDo: write help menus
+			# print help menu
+			if [[ $2 ]]; then
+				if [[ $2 == 'acp' ]]; then
+				elif [[ $2 == 'add' ]]; then
+				elif [[ $2 == 'branch' ]]; then
+				elif [[ $2 == 'checkout' ]]; then
+				elif [[ $2 == 'clone' ]]; then
+				elif [[ $2 == 'commit' ]]; then
+				elif [[ $2 == 'ignore' ]]; then
+				elif [[ $2 == 'log' ]]; then
+				elif [[ $2 == 'merge' ]]; then
+				elif [[ $2 == 'pull' ]]; then
+				elif [[ $2 == 'push' ]]; then
+				elif [[ $2 == 'pushup' ]]; then
+				elif [[ $2 == 'remote' ]]; then
+				elif [[ $2 == 'status' ]]; then
+				fi
+			fi
+		elif [[ $1 == 'v' ]] || [[ $1 == 'version' ]]; then
+			echo $version;
+		else
+			echo "Unrecognized command.";
+		fi
+	else 
+		# print out project description, commands/meta info
+		echo "*******************************************************************";
+		echo "*  Git-High-Level CLI (v$version) is a small library of bash shell   *";
+		echo "*  commands to shortcut several git commands                      *";
+		echo "*                                                                 *";
+		echo "*  === COMMANDS ===                                               *";
+		echo "* ghl   		: view this message.                      *";
+		echo "* acp                   : add, commit with message, and push to   *";
+		echo "*                       default branch                            *";
+		echo "* add   		: add files to stage.                     *";
+		echo "* branch   		: view/add/remove branches.               *";
+		echo "* checkout   		: change branches.                        *";
+		echo "* clone   		: clone repos.                         	  *";
+		echo "* commit   		: commit staged files.                    *";
+		echo "* ignore 		: ignores passed files or creates         *";
+		echo "*                         gitignore with passed files             *";
+		echo "* log   		: view past commits.                      *";
+		echo "* merge   		: merge a branch with the current branch. *";
+		echo "* pull   		: pull from a remote repo.                *";
+		echo "* push   		: push to a remote repo.                  *";
+		echo "* pushup   		: push to and set upstream.               *";
+		echo "* remote   		: view/add/remove remotes.                *";
+		echo "* status   		: view staged/untracked files             *";
+		echo "*******************************************************************";
+	fi
 }
 acp() {
 	if [[ $1 ]]; then
