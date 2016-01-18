@@ -8,19 +8,33 @@ ghl() {
 			# print help menu
 			if [[ $2 ]]; then
 				if [[ $2 == 'acp' ]]; then
+					echo "Help -- acp";
 				elif [[ $2 == 'add' ]]; then
+					echo "Help -- add";
 				elif [[ $2 == 'branch' ]]; then
+					echo "Help -- branch";
 				elif [[ $2 == 'checkout' ]]; then
+					echo "Help -- checkout";
 				elif [[ $2 == 'clone' ]]; then
+					echo "Help -- clone";
 				elif [[ $2 == 'commit' ]]; then
+					echo "Help -- commit";
 				elif [[ $2 == 'ignore' ]]; then
+					echo "Help -- ignore";
 				elif [[ $2 == 'log' ]]; then
+					echo "Help -- log";
 				elif [[ $2 == 'merge' ]]; then
+					echo "Help -- merge";
 				elif [[ $2 == 'pull' ]]; then
+					echo "Help -- pull";
 				elif [[ $2 == 'push' ]]; then
+					echo "Help -- push";
 				elif [[ $2 == 'pushup' ]]; then
+					echo "Help -- pushup";
 				elif [[ $2 == 'remote' ]]; then
+					echo "Help -- remote";
 				elif [[ $2 == 'status' ]]; then
+					echo "Help -- status";
 				fi
 			fi
 		elif [[ $1 == 'v' ]] || [[ $1 == 'version' ]]; then
