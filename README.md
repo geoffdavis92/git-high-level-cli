@@ -24,7 +24,7 @@ $ git clone git@github.com:fullstax/git-high-level-cli.git
 
 ---
 #### Note: Read before continuing
-Once you include the preceeding export/source lines in your `~/.bash*` file(s), some commands with the same name may override or be overridden by the GHL file, depending on the hierarchy of that file. 
+Once you include the succeeding export/source lines in your `~/.bash*` file(s), some commands with the same name may override or be overridden by the GHL file, depending on the hierarchy of that file. 
 
 If you notice you overrode a command, simply comment out/remove the export/source lines, or rename one of the instances of the conflicted command to something else.  
 
