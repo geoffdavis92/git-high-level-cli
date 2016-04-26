@@ -1,5 +1,5 @@
 # git-high-level-cli
-version="0.5.1";
+version="0.5.2";
 # git commands
 ghl() {
 	if [[ $1 ]]; then
@@ -19,6 +19,10 @@ ghl() {
 					echo "Help -- clone";
 				elif [[ $2 == 'commit' ]]; then
 					echo "Help -- commit";
+				elif [[ $2 == 'discard' ]]; then
+					echo "Help -- discard";
+				elif [[ $2 == 'graph' ]]; then
+					echo "Help -- graph";
 				elif [[ $2 == 'ignore' ]]; then
 					echo "Help -- ignore";
 				elif [[ $2 == 'log' ]]; then
@@ -38,7 +42,7 @@ ghl() {
 				fi
 			fi
 		elif [[ $1 == 'v' ]] || [[ $1 == 'version' ]]; then
-			echo $version;
+			echo "v$version";
 		else
 			echo "Unrecognized command.";
 		fi
@@ -51,21 +55,23 @@ ghl() {
 		echo "*  === COMMANDS ===                                               *";
 		echo "* ghl   		: view this message.                      *";
 		echo "* acp                   : add, commit with message, and push to   *";
-		echo "*                       default branch                            *";
+		echo "*                       default branch.                           *";
 		echo "* add   		: add files to stage.                     *";
 		echo "* branch   		: view/add/remove branches.               *";
 		echo "* checkout   		: change branches.                        *";
 		echo "* clone   		: clone repos.                         	  *";
 		echo "* commit   		: commit staged files.                    *";
+		echo "* discard   		: discard staged file(s).                 *";
+		echo "* graph   		: display graph log of repo commits.      *";
 		echo "* ignore 		: ignores passed files or creates         *";
-		echo "*                         gitignore with passed files             *";
+		echo "*                         gitignore with passed files.            *";
 		echo "* log   		: view past commits.                      *";
 		echo "* merge   		: merge a branch with the current branch. *";
 		echo "* pull   		: pull from a remote repo.                *";
 		echo "* push   		: push to a remote repo.                  *";
 		echo "* pushup   		: push to and set upstream.               *";
 		echo "* remote   		: view/add/remove remotes.                *";
-		echo "* status   		: view staged/untracked files             *";
+		echo "* status   		: view staged/untracked files.            *";
 		echo "*******************************************************************";
 	fi
 }
@@ -162,6 +168,17 @@ commit() {
 	else
 		echo "!ERROR : No commit message entered.";
 	fi
+}
+discard() {
+	str="";
+	for el in $@; do
+	    str="$str $el";
+	done
+	git checkout -- $str;
+}
+graph() {
+	# from http://gggritso.com/human-git-aliases
+	git log --graph -10 --branches --remotes --tags  --format=format:'%Cgreen%h %Creset• %<(75,trunc)%s (%cN, %cr) %Cred%d' --date-order;
 }
 ignore() {
 	if [[ -e ".gitignore" ]]; then
