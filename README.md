@@ -4,7 +4,7 @@ Git just got *that* much easier! The Git High-Level CLI simplifies the git proce
 
 |Status|
 |------|
-|0.5.1 |
+|0.5.2 |
 
 ## Overview
 
