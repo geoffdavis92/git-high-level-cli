@@ -70,17 +70,17 @@ $ ghl v # short version
 $ ghl version # long version
 ```
 
-Updating is simple; you can enter the following command
+Updating is simple; you can enter the following command: 
 
 ```bash
 $ ghl u[pdate]
 ```
 
-...or navigate to the `.bash` directory that you installed the project to, and pull:
+...or navigate to the directory that you installed the project to, and pull:
 
 
 ```bash
-$ cd ~/.bash/git-high-level-cli
+$ cd ~/path/to/git-high-level-cli
 $ pull # assuming you have the GHL pull command setup
 ```
 
