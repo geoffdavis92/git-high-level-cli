@@ -1,5 +1,5 @@
 # git-high-level-cli
-version="0.5.2";
+version="0.5.3";
 # git commands
 ghl() {
 	if [[ $1 ]]; then
@@ -43,6 +43,9 @@ ghl() {
 			fi
 		elif [[ $1 == 'v' ]] || [[ $1 == 'version' ]]; then
 			echo "v$version";
+		elif [[ $1 == 'u' ]] || [[ $1 == 'update' ]]; then
+			echo "Updating GHL CLI";
+			cd ~/.bash/git-high-level-cli && pull && cd -;
 		else
 			echo "Unrecognized command.";
 		fi

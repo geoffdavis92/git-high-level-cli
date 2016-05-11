@@ -4,7 +4,7 @@ Git just got *that* much easier! The Git High-Level CLI simplifies the git proce
 
 |Status|
 |------|
-|0.5.2 |
+|0.5.3 |
 
 ## Overview
 
@@ -70,7 +70,14 @@ $ ghl v # short version
 $ ghl version # long version
 ```
 
-Updating is simple; just navigate to the `.bash` directory that you installed the project to, and pull:
+Updating is simple; you can enter the following command
+
+```bash
+$ ghl u[pdate]
+```
+
+...or navigate to the `.bash` directory that you installed the project to, and pull:
+
 
 ```bash
 $ cd ~/.bash/git-high-level-cli
