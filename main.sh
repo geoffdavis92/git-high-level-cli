@@ -1,5 +1,5 @@
 # git-high-level-cli
-version="0.5.2";
+version="0.5.3";
 # git commands
 ghl() {
 	if [[ $1 ]]; then
@@ -117,12 +117,20 @@ branch() {
 		git branch $1 &&
 		git branch;
 	elif [[ $1 == "-d" ]] &&  [ $2 ]; then
-		if [ $2 ]; then
+		if [ $3 ]; then
 			# remove branch passed as argument 2, then print branches
 			git branch -d $2 &&
 			git branch;
 		else
 			echo "!ERROR : No branch name specified.";
+		fi
+	elif [[ $1 == "-c" ]] && [ $2 ]; then
+		if [ $3 ]; then
+			git branch $2 &&
+			git checkout $2 &&
+			git branch;
+		else
+			echo "!ERROR : No branch name specified."
 		fi
 	else
 		# print branches
