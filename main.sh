@@ -115,7 +115,7 @@ add() {
 	fi
 }
 branch() {
-	if [[ $1 ]] && [[ $1 != "-d" ]]; then
+	if [[ $1 ]] && [[ $1 != "-d" ]] && [[ $1 != "-c" ]]; then
 		# add branch passed as argument 2, then print branches
 		git branch $1 &&
 		git branch;
@@ -128,9 +128,9 @@ branch() {
 			echo "!ERROR : No branch name specified.";
 		fi
 	elif [[ $1 == "-c" ]] && [ $2 ]; then
-		if [ $3 ]; then
-			git branch $3 &&
-			git checkout $3 &&
+		if [ $2 ]; then
+			git branch $2 &&
+			git checkout $2 &&
 			git branch;
 		else
 			echo "!ERROR : No branch name specified."
