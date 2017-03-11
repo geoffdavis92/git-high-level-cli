@@ -129,8 +129,8 @@ branch() {
 		fi
 	elif [[ $1 == "-c" ]] && [ $2 ]; then
 		if [ $3 ]; then
-			git branch $2 &&
-			git checkout $2 &&
+			git branch $3 &&
+			git checkout $3 &&
 			git branch;
 		else
 			echo "!ERROR : No branch name specified."
