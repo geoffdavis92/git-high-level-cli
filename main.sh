@@ -120,7 +120,7 @@ branch() {
 		git branch $1 &&
 		git branch;
 	elif [[ $1 == "-d" ]] &&  [ $2 ]; then
-		if [ $3 ]; then
+		if [ $2 ]; then
 			# remove branch passed as argument 2, then print branches
 			git branch -d $2 &&
 			git branch;
