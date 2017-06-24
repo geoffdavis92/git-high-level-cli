@@ -1,5 +1,5 @@
 # git-high-level-cli
-version="0.5.3";
+version="0.5.4";
 # git commands
 ghl() {
 	if [[ $1 ]]; then
@@ -151,7 +151,21 @@ checkout() {
 clone() {
 	if [ $1 ]; then
 		if [[ $1 == "-p" ]] || [[ $1 == "paste" ]]; then
-			if [[ $2 ]]; then
+			if [[ $2 ]] && [[ $2 == '-cd' ]]; then
+				if [[ $3 ]]; then
+					# clone repo into directory $3 and cd into $3 
+					git clone $(pbpaste) $3 && cd $3;
+				else
+					# store pasted git url
+					repo_url=$(pbpaste);
+					# strip github url + username
+					noGithub=${repo_url/https\:\/\/github\.com\/[a-zA-Z0-9]*\//};
+					# strip .git extension
+					repoSlug=${noGithub/\.git/};
+					# clone repo url and cd into local repo
+					git clone $repo_url && cd $repoSlug;
+				fi
+			elif [[ $2 ]]; then
 				# clone repo from clipboard to directory $2
 				git clone $(pbpaste) $2;
 			else
