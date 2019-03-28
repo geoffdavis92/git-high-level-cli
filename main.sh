@@ -21,6 +21,8 @@ ghl() {
 					echo "Help -- commit";
 				elif [[ $2 == 'discard' ]]; then
 					echo "Help -- discard";
+				elif [[ $2 == 'get-branch' ]]; then
+					echo "Help -- get-branch";
 				elif [[ $2 == 'graph' ]]; then
 					echo "Help -- graph";
 				elif [[ $2 == 'ignore' ]]; then
@@ -65,6 +67,7 @@ ghl() {
 		echo "* clone   		: clone repos.                         	  *";
 		echo "* commit   		: commit staged files.                    *";
 		echo "* discard   		: discard staged file(s).                 *";
+		echo "* get-branch		: get current branch.                   *";
 		echo "* graph   		: display graph log of repo commits.      *";
 		echo "* ignore 		: ignores passed files or creates         *";
 		echo "*                         gitignore with passed files.            *";
@@ -200,6 +203,14 @@ discard() {
 	    str="$str $el";
 	done
 	git checkout -- $str;
+}
+get-branch() {
+  CURRENT_BRANCH=$(branch | grep \* | sed -E "s/\*[ ]//");
+  if [[ $1 == '-c' ]]; then
+    printf $CURRENT_BRANCH | pbcopy;
+  else
+    echo $CURRENT_BRANCH;
+  fi
 }
 graph() {
 	# from http://gggritso.com/human-git-aliases
